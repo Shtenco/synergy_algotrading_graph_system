@@ -87,3 +87,27 @@ flowchart LR
 - [Financial OS](https://github.com/Shtenco/synergy_financial_os)
 - [RiskGuard](https://github.com/Shtenco/synergy_riskguard)
 - [75-repository atlas](https://github.com/Shtenco/synergy_system/blob/main/docs/SYNERGY_REPOSITORY_ATLAS.md)
+
+
+---
+
+# 🕸️ Глубокий статус-паспорт AlgoTrading Graph
+
+## Реальность `main`
+
+На текущем `main` существует только README. Поэтому graph node/edge model, capacity allocation и route engine являются **канонической спецификацией R&D target**, а не реализованным runtime.
+
+```mermaid
+flowchart LR
+    SPEC[Node/edge contracts] --> ADAPT[Adapters needed]
+    ADAPT --> GRAPH[Executable graph]
+    GRAPH --> REPRICE[Exact repricing]
+    REPRICE --> SHADOW[Shadow]
+    SHADOW --> REC[Reconciled execution]
+```
+
+## Promotion gate
+
+минимум один реальный adapter set + synchronized quotes + fee/capacity model + cycle discovery + exact repricing + tests + evidence report.
+
+До этого `CANDIDATE → ... → RECONCILED` остаётся status vocabulary, а не текущая achieved pipeline.
