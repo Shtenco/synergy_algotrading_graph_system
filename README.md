@@ -54,3 +54,36 @@ A positive arithmetic cycle is not a verified arbitrage until actual executable 
 - payment/rebalancing execution: `Shtenco/synergy_pay_system`;
 - accounting truth: `Shtenco/synergy_financial_os`;
 - macro/liquidity features: `Shtenco/global_liquidity_dataminer`.
+
+
+---
+
+# 🧭 Federation passport
+
+```mermaid
+flowchart LR
+    DATA[📡 Market / venue data] --> GRAPH[🕸️ AlgoTrading Graph]
+    GRAPH --> A[📈 MIDAS alpha graph]
+    GRAPH --> B[💳 MetaPay rebalancing graph]
+    A --> RISK[🛡️ RiskGuard]
+    B --> SETTLE[✅ Settlement]
+    SETTLE --> FOS[💰 Financial OS]
+```
+
+Ключевой архитектурный принцип репозитория особенно важен для всей SYNERGY: **AlphaGraph и RebalancingGraph не являются одной и той же задачей оптимизации**.
+
+## Evidence gates
+
+Положительный cycle/route должен проходить минимум:
+
+`CANDIDATE → REPRICED → SIMULATED → SHADOW → LIVE_EXECUTED → RECONCILED`.
+
+На каждом переходе должны сохраняться timestamp, executable quotes, capacity, fee model и evidence.
+
+## Related
+
+- [MIDAS AI](https://github.com/Shtenco/synergy_midas_ai)
+- [Pay System](https://github.com/Shtenco/synergy_pay_system)
+- [Financial OS](https://github.com/Shtenco/synergy_financial_os)
+- [RiskGuard](https://github.com/Shtenco/synergy_riskguard)
+- [75-repository atlas](https://github.com/Shtenco/synergy_system/blob/main/docs/SYNERGY_REPOSITORY_ATLAS.md)
