@@ -1,10 +1,10 @@
-# 🕸️ Algorithmic Trading Graph System — verified R&D specification dossier
+#  Algorithmic Trading Graph System — verified R&D specification dossier
 
-> **Статус:** 🧱 STUB / specification-only on current `main`.
+> **Статус:**  STUB / specification-only on current `main`.
 > **Проверено по фактическому repository tree:** 29.09.2026.
 > **Current reality:** repository contains only `README.md`; no executable graph engine, tests, adapters or datasets are present.
 
-## 1. 🎯 Mission
+## 1.  Mission
 
 The target is a settlement-aware, capacity-aware global market/liquidity graph supporting two **separate** optimization problems:
 
@@ -20,7 +20,7 @@ eq RebalancingGraph
 
 They may share observations, but have different objectives, latency, funding and settlement constraints.
 
-## 2. 📦 Verified current tree
+## 2.  Verified current tree
 
 ```text
 synergy_algotrading_graph_system/
@@ -42,7 +42,7 @@ Missing today:
 - execution simulator;
 - evidence artifacts.
 
-## 3. 🧠 Target node model
+## 3.  Target node model
 
 Specified node:
 
@@ -52,7 +52,7 @@ Node=(institution,venue,account/channel,asset/currency,settlementDate)
 
 This is richer than asset-only graph because USD at two venues/accounts/settlement dates is not necessarily fungible at execution time.
 
-## 4. 🔗 Target edge model
+## 4.  Target edge model
 
 Specified edge:
 
@@ -72,7 +72,7 @@ execution evidence
 
 This is the correct direction because a scalar FX rate alone cannot prove arbitrage.
 
-## 5. 💹 Candidate cycle math
+## 5.  Candidate cycle math
 
 For cycle (C):
 
@@ -94,7 +94,7 @@ It must survive:
 - latency;
 - execution evidence.
 
-## 6. 📦 Shared-edge capacity
+## 6.  Shared-edge capacity
 
 For multiple selected routes/cycles:
 
@@ -104,7 +104,7 @@ sum_i q_{i,e}le Cap_e
 
 Without this constraint, portfolio optimization can double-use the same liquidity.
 
-## 7. 🏗️ Target architecture
+## 7.  Target architecture
 
 ```mermaid
 flowchart TD
@@ -124,7 +124,7 @@ flowchart TD
     RG --> PAY[Pay System]
 ```
 
-## 8. 🚦 Evidence-state vocabulary
+## 8.  Evidence-state vocabulary
 
 Specified lifecycle:
 
@@ -139,7 +139,7 @@ CANDIDATE
 
 Current repository itself is **not at CANDIDATE runtime stage** because no engine exists. The vocabulary is target-state semantics.
 
-## 9. 📥 Planned inputs
+## 9.  Planned inputs
 
 - L1/L2 quotes;
 - bank/ECN/exchange rates;
@@ -153,7 +153,7 @@ Current repository itself is **not at CANDIDATE runtime stage** because no engin
 - latency;
 - execution receipts.
 
-## 10. 📤 Planned outputs
+## 10.  Planned outputs
 
 Alpha side:
 
@@ -173,7 +173,7 @@ Rebalancing side:
 - capacity consumed;
 - transfer evidence.
 
-## 11. 🛡️ Authority boundaries
+## 11.  Authority boundaries
 
 ```text
 positive cycle arithmetic != arbitrage
@@ -188,7 +188,7 @@ graph state != accounting truth
 
 Accounting recognition belongs downstream to Financial OS after settlement evidence.
 
-## 12. ⚠️ Hard technical problems
+## 12.  Hard technical problems
 
 ### Time synchronization
 Edges from different timestamps create phantom cycles.
@@ -211,7 +211,7 @@ Exchange conversion profit can be trapped by transfer delays/limits.
 ### Stale bank quotes
 Indicative rates are not executable rates.
 
-## 13. 🧪 Definition of Done: STUB → CANDIDATE
+## 13.  Definition of Done: STUB → CANDIDATE
 
 Minimum implementation:
 
@@ -227,7 +227,7 @@ Minimum implementation:
 
 Only then may repo claim implemented candidate discovery.
 
-## 14. 🧪 Definition of Done: CANDIDATE → SIMULATED
+## 14.  Definition of Done: CANDIDATE → SIMULATED
 
 Need:
 
@@ -240,7 +240,7 @@ Need:
 - multi-leg failure;
 - replay on frozen market snapshot.
 
-## 15. 🧪 Definition of Done: SHADOW → LIVE
+## 15.  Definition of Done: SHADOW → LIVE
 
 Need:
 
@@ -253,7 +253,7 @@ Need:
 - risk authority;
 - immutable audit.
 
-## 16. 🧪 Definition of Done: LIVE → RECONCILED
+## 16.  Definition of Done: LIVE → RECONCILED
 
 Need evidence for:
 
@@ -270,7 +270,7 @@ realized consolidated P&L
 
 Without reconciliation, positive execution logs do not establish economic profit.
 
-## 17. 🛠️ Reproducibility current state
+## 17.  Reproducibility current state
 
 There is no runtime to reproduce.
 
@@ -284,20 +284,20 @@ find . -maxdepth 2 -type f
 
 will show README as the only project file.
 
-## 18. 🗺️ Current vs target map
+## 18.  Current vs target map
 
 | Component | Current |
 |---|---|
-| formal graph specification | ✅ |
-| alpha/rebalancing separation | ✅ documented |
-| runtime graph | ❌ |
-| adapters | ❌ |
-| tests | ❌ |
-| CI | ❌ |
-| execution evidence | ❌ |
-| reconciliation | ❌ |
+| formal graph specification |  |
+| alpha/rebalancing separation |  documented |
+| runtime graph |  |
+| adapters |  |
+| tests |  |
+| CI |  |
+| execution evidence |  |
+| reconciliation |  |
 
-## 19. 🔗 Federation dependencies
+## 19.  Federation dependencies
 
 Target integration:
 
@@ -308,19 +308,19 @@ Target integration:
 - `synergy_riskguard` — risk authority;
 - `synergy_trademux` — execution.
 
-## 20. 📊 Evidence maturity
+## 20.  Evidence maturity
 
 ```text
-Specification              ✅
-Repository-specific model  ✅
-Executable implementation  ❌
-Tests                      ❌
-Observed evidence          ❌
-Live execution             ❌
-Reconciliation             ❌
+Specification              
+Repository-specific model  
+Executable implementation  
+Tests                      
+Observed evidence          
+Live execution             
+Reconciliation             
 ```
 
-## 21. 🚀 Roadmap
+## 21.  Roadmap
 
 1. typed package;
 2. frozen fixture graph;
@@ -333,7 +333,7 @@ Reconciliation             ❌
 9. risk/TradeMux link;
 10. reconciliation evidence.
 
-## 22. 🛑 Что project НЕ утверждает
+## 22.  Что project НЕ утверждает
 
 - that a global graph is currently implemented;
 - that any profitable cycle has been observed;
@@ -343,4 +343,4 @@ Reconciliation             ❌
 
 ---
 
-[🧭 SYNERGY SYSTEM](https://github.com/Shtenco/synergy_system) · [📚 Atlas](https://github.com/Shtenco/synergy_system/blob/main/docs/SYNERGY_REPOSITORY_ATLAS.md)
+[ SYNERGY SYSTEM](https://github.com/Shtenco/synergy_system) · [ Atlas](https://github.com/Shtenco/synergy_system/blob/main/docs/SYNERGY_REPOSITORY_ATLAS.md)
